@@ -14,15 +14,13 @@ const Home = () => {
       .catch((err) => console.log("error", err));
   }, []);
 
-  console.log(dentistasData);
-
   return (
-    <main className="">
+    <main>
       <h1>Home</h1>
       <div className="card-grid">
         {/* Aqui deberias renderizar las cards */}
         {dentistasData.map((dentista) => (
-          <Card key={dentista.id} data={dentista} />
+          <Card key={dentista.id} dentista={dentista} />
         ))}
       </div>
     </main>

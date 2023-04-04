@@ -1,4 +1,6 @@
+import { Button, TextField } from "@mui/material";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Form = () => {
@@ -7,52 +9,76 @@ const Form = () => {
     email: "",
   });
 
+  const [error, setError] = useState({
+    isActive: false,
+    errorMessage: "",
+  });
+
   const handleChange = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
     console.log(userData);
   };
 
   const validEmail = (obj) => {
-    const sinEspacios = obj.trim();
-    const final = sinEspacios.split();
-    if (final.some("@")) {
+    const whitouthSpaces = obj.trim();
+    if (whitouthSpaces.includes("@gmail.com") && whitouthSpaces.length > 11) {
       return true;
     } else {
       return false;
     }
   };
 
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    const isvalidName = userData.userName.trim().length > 5;
     const isValidEmail = validEmail(userData.email);
-    const isvalidName = userData.name.trim().lenght;
-    if (isvalidName > 5 && isValidEmail) {
-      //alert(`Gracias ${isvalidName}, te contactaremos cuando antes vía mail`);
+    if (isvalidName && isValidEmail) {
       Swal.fire(
-        `Gracias ${isvalidName}, te contactaremos cuando antes vía mail`
+        `Gracias ${userData.userName}, te contactaremos cuando antes vía mail`
       );
+      setError({
+        ...error,
+        isActive: false,
+      });
+      navigate("/home");
     } else {
-      alert(`Por favor verifique su información nuevamente`);
+      setError({
+        ...error,
+        isActive: true,
+        errorMessage: "Por favor verifique su información nuevamente",
+      });
     }
   };
+
   return (
-    <div>
+    <>
       <form onSubmit={handleSubmit}>
-        <input
-          placeholder="Nombre completo"
+        {error.isActive && (
+          <span style={{ color: "red", fontSize: "0.9rem" }}>
+            {error.errorMessage}
+          </span>
+        )}
+        <TextField
+          variant="outlined"
+          label="Nombre completo"
           name="userName"
           onChange={handleChange}
           required
+          fullWidth
         />
-        <input
-          placeholder="Email"
+        <TextField
+          variant="outlined"
+          label="Email"
           name="email"
           onChange={handleChange}
           required
+          fullWidth
         />
-        <button type="submit">Enviar</button>
+        <Button type="submit">Enviar</Button>
       </form>
-    </div>
+    </>
   );
 };
 

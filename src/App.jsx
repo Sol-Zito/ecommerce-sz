@@ -5,11 +5,17 @@ import Detail from "./Routes/Detail";
 import Favs from "./Routes/Favs";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
-import { ContextProvider } from "./Components/utils/GlobalContext";
+import {
+  ContextGlobal,
+  ContextProvider,
+} from "./Components/utils/GlobalContext";
+import { useContext, useEffect } from "react";
 
 export const Layout = () => {
+  const { state } = useContext(ContextGlobal);
+
   return (
-    <div className="App">
+    <div className={`${state.theme} App`}>
       <Navbar />
       <Outlet />
       <Footer />

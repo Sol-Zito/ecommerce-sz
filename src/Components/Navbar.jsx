@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { ContextGlobal } from "./utils/GlobalContext";
 import { Link } from "react-router-dom";
+import MenuIcon from "@mui/icons-material/Menu";
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
@@ -15,24 +16,13 @@ const Navbar = () => {
       dispatch({ type: "MOD_LIGHT" });
     }
   }
-  useEffect(() => {
-    console.log("new color", state.theme);
-  }, [state.theme]);
+
+  useEffect(() => {}, [state.theme]);
+
   return (
-    <nav style={{ justifyContent: "flex-end" }}>
+    <nav id="navbar">
       {/* Aqui deberan agregar los liks correspondientes a las rutas definidas */}
-      <ul
-        style={{
-          fontSize: "large",
-          listStyleType: "none",
-          display: "flex",
-          flexWrap: "wrap",
-          alignItems: "center",
-          justifyContent: "flex-end",
-          gap: "2px",
-          margin: "16px 19px",
-        }}
-      >
+      <ul className="list-navbar">
         <li>
           <Link to="/home">Home</Link>
         </li>
