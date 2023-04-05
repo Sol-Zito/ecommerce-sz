@@ -9,7 +9,7 @@ import {
   ContextGlobal,
   ContextProvider,
 } from "./Components/utils/GlobalContext";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 
 export const Layout = () => {
   const { state } = useContext(ContextGlobal);

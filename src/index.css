@@ -144,6 +144,8 @@ form {
   align-items: flex-start;
 }
 
+
+
 .detail-card>img {
   margin: auto;
   width: 150px;
@@ -183,6 +185,6 @@ tr:nth-child(even) {
   color: white;
 }
 
-.dark>nav>ul>li>a {
+nav.dark>ul>li>a {
   color: white;
 }
