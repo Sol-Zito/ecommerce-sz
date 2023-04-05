@@ -11,7 +11,6 @@ const Navbar = () => {
   function ChageTheme() {
     if (state.theme === "light") {
       dispatch({ type: "MOD_DARK" });
-      console.log(state.theme);
     } else if (state.theme === "dark") {
       dispatch({ type: "MOD_LIGHT" });
     }

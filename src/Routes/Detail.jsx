@@ -15,7 +15,6 @@ const Detail = () => {
       .then((res) => setDentistsSelect(res.data))
       .catch((err) => console.log("error", err));
   }, []);
-  console.log("dentistSelect", dentistSelect);
   // Consumiendo el parametro dinamico de la URL deberan hacer un fetch a un user en especifico
 
   return (

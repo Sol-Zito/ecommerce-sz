@@ -8,9 +8,6 @@ const Favs = () => {
   const { state, dispatch } = useContext(ContextGlobal);
 
   const favsDentists = state.data;
-  console.log("state en fav", favsDentists);
-
-  console.log("favsDentists", favsDentists);
 
   return (
     <>

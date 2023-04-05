@@ -16,7 +16,6 @@ const Form = () => {
 
   const handleChange = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
-    console.log(userData);
   };
 
   const validEmail = (obj) => {
