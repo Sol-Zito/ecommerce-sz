@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { ContextGlobal } from "./utils/GlobalContext";
 import { Link } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
+import { Button } from "@mui/material";
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
@@ -26,14 +27,16 @@ const Navbar = () => {
           <Link to="/home">Home</Link>
         </li>
         <li>
-          <Link to="/contacto">Contact</Link>
+          <Link to="/contact">Contact</Link>
         </li>
         <li>
           <Link to="/favs">Favs</Link>
         </li>
         <li>
           {/* Deberan implementar ademas la logica para cambiar de Theme con el button */}
-          <button onClick={ChageTheme}>☀ 🌙</button>
+          <Button variant="outlined" onClick={ChageTheme}>
+            ☀ 🌙
+          </Button>
         </li>
       </ul>
     </nav>

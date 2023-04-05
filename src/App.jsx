@@ -1,27 +1,11 @@
-import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Contact from "./Routes/Contact";
 import Home from "./Routes/Home";
 import Detail from "./Routes/Detail";
 import Favs from "./Routes/Favs";
-import Navbar from "./Components/Navbar";
-import Footer from "./Components/Footer";
-import {
-  ContextGlobal,
-  ContextProvider,
-} from "./Components/utils/GlobalContext";
-import { useContext } from "react";
-
-export const Layout = () => {
-  const { state } = useContext(ContextGlobal);
-
-  return (
-    <div className={`${state.theme} App`}>
-      <Navbar />
-      <Outlet />
-      <Footer />
-    </div>
-  );
-};
+import { ContextProvider } from "./Components/utils/GlobalContext";
+import Main from "./Routes/Main";
+import Layout from "./Components/Layout";
 
 function App() {
   return (
@@ -29,9 +13,10 @@ function App() {
       <ContextProvider>
         <Routes>
           <Route element={<Layout />}>
+            <Route path="/" element={<Main />} />
             <Route path="/home" element={<Home />} />
-            <Route path="/contacto" element={<Contact />} />
-            <Route path="/dentista/:id" element={<Detail />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/dentist/:id" element={<Detail />} />
             <Route path="/favs" element={<Favs />} />
           </Route>
         </Routes>

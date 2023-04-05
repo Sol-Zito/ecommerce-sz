@@ -1,30 +1,33 @@
 import { createContext, useEffect, useMemo, useReducer } from "react";
 
-const getDentistFromStorage = () => {
+const getDentistFavFromStorage = () => {
   const localData = localStorage.getItem("listDentist");
   return localData ? JSON.parse(localData) : [];
 };
 
 const getThemeFromStorage = () => {
   const localData = localStorage.getItem("theme");
-  return localData ? localData : "";
+  return localData ? localData : "light";
 };
 
 const setDentistInStorage = (dentist) => {
-  const array = getDentistFromStorage();
+  const array = getDentistFavFromStorage();
   array.push(dentist);
   return localStorage.setItem("listDentist", JSON.stringify(array));
 };
 
 export const initialState = {
   theme: getThemeFromStorage(),
-  data: getDentistFromStorage(),
+  users: [],
+  favs: getDentistFavFromStorage(),
 };
 
 export const ContextGlobal = createContext();
 
-function themesReducer(state, action) {
+function globalReducer(state, action) {
   switch (action.type) {
+    case "GET_USERS":
+      return { ...state, users: action.payload };
     case "MOD_LIGHT":
       localStorage.setItem("theme", "light");
       return { ...state, theme: "light" };
@@ -32,7 +35,7 @@ function themesReducer(state, action) {
       localStorage.setItem("theme", "dark");
       return { ...state, theme: "dark" };
     case "ADD_FAV":
-      let exist = state.data.some(
+      let exist = state.favs.some(
         (element) => element.id === action.payload.id
       );
       if (exist) {
@@ -42,7 +45,7 @@ function themesReducer(state, action) {
         setDentistInStorage({ ...newDentist });
         alert(`${action.payload.name} fue agregado con exito`);
       }
-      return { ...state, data: getDentistFromStorage() };
+      return { ...state, favs: getDentistFavFromStorage() };
 
     default:
       return state;
@@ -51,8 +54,8 @@ function themesReducer(state, action) {
 
 export const ContextProvider = ({ children }) => {
   //Aqui deberan implementar la logica propia del Context, utilizando el hook useMemo
-  const providerValue = useMemo(() => ({ themesReducer }), [initialState]);
-  const [state, dispatch] = useReducer(themesReducer, initialState);
+  const providerValue = useMemo(() => ({ globalReducer }), [initialState]);
+  const [state, dispatch] = useReducer(globalReducer, initialState);
 
   useEffect(() => {}, [providerValue]);
 

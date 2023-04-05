@@ -13,11 +13,19 @@ code {
 }
 
 .favButton {
-  background-color: rgba(136, 136, 136, 0.116);
+  background-color: rgba(91, 54, 175, 0.76);
+  color: #062b50;
   padding: 10px;
   border: none;
   width: 100%;
   cursor: pointer;
+  align-items: center;
+  font-size: 17px;
+  margin: 2px;
+}
+
+.favButton:hover {
+  font-size: 19px;
 }
 
 h1 {

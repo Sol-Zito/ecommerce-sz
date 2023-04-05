@@ -1,11 +1,14 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { ContextGlobal } from "../Components/utils/GlobalContext";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
 const Detail = () => {
   const [dentistSelect, setDentistsSelect] = useState({});
+  const { state, dispatch } = useContext(ContextGlobal);
 
   const { id } = useParams();
 
@@ -15,6 +18,10 @@ const Detail = () => {
       .then((res) => setDentistsSelect(res.data))
       .catch((err) => console.log("error", err));
   }, []);
+
+  const addFav = () => {
+    dispatch({ type: "ADD_FAV", payload: dentistSelect });
+  };
   // Consumiendo el parametro dinamico de la URL deberan hacer un fetch a un user en especifico
 
   return (
@@ -29,7 +36,9 @@ const Detail = () => {
         <h3>Phone: {dentistSelect.phone}</h3>
         <h3>Website: {dentistSelect.website}</h3>
 
-        <button className="favButton">Add fav</button>
+        <button onClick={addFav} className="favButton">
+          <FavoriteIcon />
+        </button>
       </div>
     </>
   );
