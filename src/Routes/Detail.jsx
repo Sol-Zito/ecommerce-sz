@@ -1,8 +1,8 @@
-import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ContextGlobal } from "../Components/utils/GlobalContext";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import { getDentistById } from "../services/dentistsServices";
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
@@ -12,8 +12,9 @@ const Detail = () => {
 
   const { id } = useParams();
 
+  // Consumiendo el parametro dinamico de la URL deberan hacer un fetch a un user en especifico
   useEffect(() => {
-    const data = axios.get(`https://jsonplaceholder.typicode.com/users/${id}`);
+    const data = getDentistById(id);
     data
       .then((res) => setDentistsSelect(res.data))
       .catch((err) => console.log("error", err));
@@ -22,7 +23,6 @@ const Detail = () => {
   const addFav = () => {
     dispatch({ type: "ADD_FAV", payload: dentistSelect });
   };
-  // Consumiendo el parametro dinamico de la URL deberan hacer un fetch a un user en especifico
 
   return (
     <>

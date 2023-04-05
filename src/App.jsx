@@ -12,8 +12,8 @@ function App() {
     <BrowserRouter>
       <ContextProvider>
         <Routes>
+          <Route path="/" element={<Main />} />
           <Route element={<Layout />}>
-            <Route path="/" element={<Main />} />
             <Route path="/home" element={<Home />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/dentist/:id" element={<Detail />} />

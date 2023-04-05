@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import Card from "../Components/Card";
-import axios from "axios";
 import { ContextGlobal } from "../Components/utils/GlobalContext";
+import { getDentists } from "../services/dentistsServices";
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
@@ -9,7 +9,7 @@ const Home = () => {
   const { state, dispatch } = useContext(ContextGlobal);
 
   useEffect(() => {
-    const data = axios.get("https://jsonplaceholder.typicode.com/users");
+    const data = getDentists();
     data
       .then((res) => dispatch({ type: "GET_USERS", payload: res.data }))
       .catch((err) => console.log("error", err));

@@ -35,7 +35,7 @@ const Form = () => {
     const isValidEmail = validEmail(userData.email);
     if (isvalidName && isValidEmail) {
       Swal.fire(
-        `Gracias ${userData.userName}, te contactaremos cuando antes vía mail`
+        `Gracias ${userData.userName}, te contactaremos cuanto antes vía mail`
       );
       setError({
         ...error,
@@ -55,7 +55,14 @@ const Form = () => {
     <>
       <form onSubmit={handleSubmit}>
         {error.isActive && (
-          <span style={{ color: "red", fontSize: "0.9rem" }}>
+          <span
+            style={{
+              color: "crimson",
+              fontSize: "1rem",
+              fontWeight: "500",
+              margin: "8px",
+            }}
+          >
             {error.errorMessage}
           </span>
         )}
@@ -75,7 +82,9 @@ const Form = () => {
           required
           fullWidth
         />
-        <Button type="submit">Enviar</Button>
+        <Button variant="contained" type="submit">
+          Enviar
+        </Button>
       </form>
     </>
   );
