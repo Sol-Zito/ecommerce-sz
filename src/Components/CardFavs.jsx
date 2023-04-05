@@ -1,7 +1,7 @@
 import React from "react";
 
-const CardFavs = ({ dentista }) => {
-  const { name, username, phone, website } = dentista;
+const CardFavs = ({ dentist }) => {
+  const { name, username, phone, website } = dentist;
   return (
     <div className="detail-card">
       <img
@@ -10,9 +10,9 @@ const CardFavs = ({ dentista }) => {
         alt="doctor placeholder"
         width="150px"
       />
-      <h2>Nombre: {name}</h2>
-      <h2> Usuario: {username}</h2>
-      <h3>Tel: {phone}</h3>
+      <h2>Name: {name}</h2>
+      <h3>Username: {username}</h3>
+      <h3>Phone: {phone}</h3>
       <h3>Website: {website}</h3>
       {/* <button>Remove fav</button> */}
     </div>

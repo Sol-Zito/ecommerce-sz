@@ -15,17 +15,17 @@ const Footer = () => {
       <img src="/images/DH.png" alt="DH-logo" />
       <ul className="list-footer">
         <li>
-          <img src="/images/ico-facebook.png" alt="ícone do facebook" />
+          <img src="/images/ico-facebook.png" alt="icon facebook" />
         </li>
         <li>
-          <img src="/images/ico-instagram.png" alt="ícone do instagram" />
+          <img src="/images/ico-instagram.png" alt="icon instagram" />
         </li>
         <li>
-          <img src="/images/ico-whatsapp.png" alt="ícone do whatsapp" />
+          <img src="/images/ico-whatsapp.png" alt="icon whatsapp" />
         </li>
 
         <li>
-          <img src="/images/ico-tiktok.png" alt="ícone do tiktok" />
+          <img src="/images/ico-tiktok.png" alt="icon tiktok" />
         </li>
       </ul>
     </footer>

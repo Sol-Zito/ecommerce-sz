@@ -24,9 +24,9 @@ const Detail = () => {
       {/* Deberan mostrar el name - email - phone - website por cada user en especifico */}
       <div className="detail-card">
         <img src="/images/doctor.jpg" alt="doctor placeholder" />
-        <h2>Nombre: {dentistSelect.name}</h2>
-        <h2> Email: {dentistSelect.email}</h2>
-        <h3>Tel: {dentistSelect.phone}</h3>
+        <h2>Name: {dentistSelect.name}</h2>
+        <h2>Email: {dentistSelect.email}</h2>
+        <h3>Phone: {dentistSelect.phone}</h3>
         <h3>Website: {dentistSelect.website}</h3>
 
         <button className="favButton">Add fav</button>

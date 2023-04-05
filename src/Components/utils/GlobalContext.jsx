@@ -33,7 +33,7 @@ function themesReducer(state, action) {
       return { ...state, theme: "dark" };
     case "ADD_FAV":
       let exist = state.data.some(
-        (elemento) => elemento.id === action.payload.id
+        (element) => element.id === action.payload.id
       );
       if (exist) {
         alert(`${action.payload.name} existe`);
