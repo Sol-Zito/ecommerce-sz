@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from "react";
-import { ContextGlobal } from "./utils/GlobalContext";
+import { ContextGlobal } from "../utils/GlobalContext";
 import { Link } from "react-router-dom";
-import MenuIcon from "@mui/icons-material/Menu";
 import { Button } from "@mui/material";
+import "../../index.css";
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 

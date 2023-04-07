@@ -1,0 +1,25 @@
+.containerBtn {
+    margin: 5px auto;
+    width: fit-content;
+}
+
+.card-grid {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 1rem;
+    width: 90vw;
+    height: auto;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+.detail-card {
+    margin: auto;
+    width: max-content;
+    display: flex;
+    padding: 0.5rem 0.5rem 0 0.5rem;
+    border: 0.5px solid rgb(136, 136, 136);
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}

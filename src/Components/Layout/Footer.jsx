@@ -1,26 +1,10 @@
 import React from "react";
-
-const icon = {
-  display: "flex",
-  justifyContent: "flex-end",
-  alignItems: "flex-start",
-  gap: "1rem",
-  filter: "brightness(0)",
-};
+import "../../index.css";
 
 const Footer = () => {
   return (
     <footer>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-evenly",
-          flexWrap: "wrap",
-          flexDirection: "row",
-          width: "80%",
-        }}
-      >
+      <div>
         <p>Powered by</p>
         <img src="/images/DH.png" alt="DH-logo" />
       </div>

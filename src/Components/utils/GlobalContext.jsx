@@ -1,19 +1,28 @@
-import { createContext, useEffect, useMemo, useReducer } from "react";
-
-const getDentistFavFromStorage = () => {
-  const localData = localStorage.getItem("listDentist");
-  return localData ? JSON.parse(localData) : [];
-};
+import { createContext, useReducer } from "react";
+import Swal from "sweetalert2";
 
 const getThemeFromStorage = () => {
   const localData = localStorage.getItem("theme");
   return localData ? localData : "light";
 };
 
+const getDentistFavFromStorage = () => {
+  const localData = localStorage.getItem("listDentist");
+  return localData ? JSON.parse(localData) : [];
+};
+
 const setDentistInStorage = (dentist) => {
   const array = getDentistFavFromStorage();
   array.push(dentist);
   return localStorage.setItem("listDentist", JSON.stringify(array));
+};
+
+const removeDentistInStorage = (newArr) => {
+  return localStorage.setItem("listDentist", JSON.stringify(newArr));
+};
+
+const clearDentistInStorage = () => {
+  return localStorage.setItem("listDentist", []);
 };
 
 export const initialState = {
@@ -39,14 +48,24 @@ function globalReducer(state, action) {
         (element) => element.id === action.payload.id
       );
       if (exist) {
-        alert(`${action.payload.name} existe`);
+        Swal.fire("Warning!", `Already exists in favs`, "warning");
       } else {
-        let newDentist = { ...action.payload, isfav: true };
+        let newDentist = { ...action.payload };
         setDentistInStorage({ ...newDentist });
-        alert(`${action.payload.name} fue agregado con exito`);
+        Swal.fire(
+          "Good job!",
+          `${action.payload.name} It was successfully added`,
+          "success"
+        );
       }
       return { ...state, favs: getDentistFavFromStorage() };
-
+    case "REMOVE_FAV":
+      let newArray = state.favs.filter((el) => el.id !== action.payload.id);
+      removeDentistInStorage(newArray);
+      return { ...state, favs: getDentistFavFromStorage() };
+    case "CLEAR_FAV":
+      clearDentistInStorage();
+      return { ...state, favs: getDentistFavFromStorage() };
     default:
       return state;
   }
@@ -54,13 +73,10 @@ function globalReducer(state, action) {
 
 export const ContextProvider = ({ children }) => {
   //Aqui deberan implementar la logica propia del Context, utilizando el hook useMemo
-  const providerValue = useMemo(() => ({ globalReducer }), [initialState]);
   const [state, dispatch] = useReducer(globalReducer, initialState);
 
-  useEffect(() => {}, [providerValue]);
-
   return (
-    <ContextGlobal.Provider value={{ state, dispatch, providerValue }}>
+    <ContextGlobal.Provider value={{ state, dispatch }}>
       {children}
     </ContextGlobal.Provider>
   );
