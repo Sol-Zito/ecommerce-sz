@@ -1,11 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ContextGlobal } from "../utils/GlobalContext";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import { getDentistById } from "../../services/dentistsServices";
 import "../../index.css";
 import "../Details/Detail.css";
-import { Button } from "@mui/material";
 import DetailCard from "./DetailCard";
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context

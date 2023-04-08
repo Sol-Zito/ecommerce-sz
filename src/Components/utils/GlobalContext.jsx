@@ -39,10 +39,10 @@ function globalReducer(state, action) {
       return { ...state, users: action.payload };
     case "MOD_LIGHT":
       localStorage.setItem("theme", "light");
-      return { ...state, theme: "light" };
+      return { ...state, theme: getThemeFromStorage() };
     case "MOD_DARK":
       localStorage.setItem("theme", "dark");
-      return { ...state, theme: "dark" };
+      return { ...state, theme: getThemeFromStorage() };
     case "ADD_FAV":
       let exist = state.favs.some(
         (element) => element.id === action.payload.id
@@ -50,11 +50,10 @@ function globalReducer(state, action) {
       if (exist) {
         Swal.fire("Warning!", `Already exists in favs`, "warning");
       } else {
-        let newDentist = { ...action.payload };
-        setDentistInStorage({ ...newDentist });
+        setDentistInStorage(action.payload);
         Swal.fire(
           "Good job!",
-          `${action.payload.name} It was successfully added`,
+          `${action.payload.name}, was successfully added`,
           "success"
         );
       }
@@ -72,7 +71,6 @@ function globalReducer(state, action) {
 }
 
 export const ContextProvider = ({ children }) => {
-  //Aqui deberan implementar la logica propia del Context, utilizando el hook useMemo
   const [state, dispatch] = useReducer(globalReducer, initialState);
 
   return (

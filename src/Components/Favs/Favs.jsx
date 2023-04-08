@@ -14,17 +14,15 @@ const Favs = () => {
 
   const removeFav = (obj) => {
     Swal.fire({
-      title: "Sure you want to delete it?",
-      showDenyButton: true,
+      title: "Are you sure you want to delete dentist?",
       showCancelButton: true,
-      confirmButtonText: "Ok",
-      denyButtonText: `No delet`,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes!",
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire("Ok!", "", "success");
+        Swal.fire("Deleted!", "Dentist was removed from favorites.", "success");
         dispatch({ type: "REMOVE_FAV", payload: obj });
-      } else if (result.isDenied) {
-        Swal.fire("Changes are not saved", "", "info");
       }
     });
   };
@@ -40,7 +38,7 @@ const Favs = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire("Deleted!", "Has been deleted.", "success");
+        Swal.fire("Deleted!", "Dentists have been removed", "success");
         dispatch({ type: "CLEAR_FAV" });
       }
     });

@@ -16,17 +16,24 @@ const Contact = () => {
     errorMessage: "",
   });
 
-  const nameMessage = (string) => {
-    const arr = string.split(" ");
-    const newName = arr
-      .map((el) => (el.length ? el[0].toUpperCase() + el.substring(1) : null))
-      .filter((el) => el !== null)
-      .join(" ");
-    return newName;
+  const nameIsValid = (string) => {
+    let regexName = /^[A-Za-zñÑáéíóúÁÉÍÓÚ\s]*$/;
+    if (string.length > 5 && regexName.test(string)) {
+      const arr = string.split(" ");
+      const newName = arr
+        .map((el) => (el.length ? el[0].toUpperCase() + el.substring(1) : null))
+        .filter((el) => el !== null)
+        .join(" ");
+      return newName;
+    } else {
+      return "";
+    }
   };
 
   const validEmail = (obj) => {
-    if (obj.includes("@") && obj.includes(".com") && obj.length > 11) {
+    let reMedio =
+      /^(([^<>()\[\]\.,;:\s@\”]+(\.[^<>()\[\]\.,;:\s@\”]+)*)|(\”.+\”))@(([^<>()[\]\.,;:\s@\”]+\.)+[^<>()[\]\.,;:\s@\”]{2,})$/;
+    if (reMedio.test(obj) && obj.length > 5) {
       return true;
     } else {
       return false;
@@ -41,11 +48,13 @@ const Contact = () => {
     e.preventDefault();
     const name = userData.userName;
     const email = userData.email;
-    const isvalidName = name.length > 5;
     const isValidEmail = validEmail(email);
-    const nameUpper = nameMessage(name);
-    if (isvalidName && isValidEmail) {
-      Swal.fire(`Gracias ${nameUpper}, te contactaremos cuanto antes vía mail`);
+    const nameUpper = nameIsValid(name);
+    console.log("nameUpper", nameUpper);
+    if (nameUpper.length && isValidEmail) {
+      Swal.fire(
+        `Thanks ${nameUpper}, we will contact you via email as soon as possible`
+      );
       setError({
         ...error,
         isActive: false,
@@ -55,7 +64,7 @@ const Contact = () => {
       setError({
         ...error,
         isActive: true,
-        errorMessage: "Por favor verifique su información nuevamente",
+        errorMessage: "**Please verify your information again**",
       });
     }
   };

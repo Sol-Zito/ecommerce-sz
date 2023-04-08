@@ -4,42 +4,35 @@ import React from "react";
 const Form = ({ handleSubmit, handleChange, error }) => {
   return (
     <div className="div-contact">
-      <h2>Want to know more?</h2>
-      <p>Send us your questions and we will contact you</p>
-      <p>Complete the form:</p>
+      <h1>Want to know more?</h1>
+      <h3>Send us your questions...</h3>
       <form onSubmit={handleSubmit}>
+        <p>Complete the form:</p>
         {error.isActive && (
-          <span
-            style={{
-              color: "crimson",
-              fontSize: "1rem",
-              fontWeight: "500",
-              margin: "8px",
-            }}
-          >
-            {error.errorMessage}
-          </span>
+          <span className="error-message">{error.errorMessage}</span>
         )}
         <TextField
-          variant="outlined"
-          label="Nombre completo"
-          placeholder="Nombre completo"
+          variant="filled"
+          label="Full name"
+          placeholder="full name"
           name="userName"
           onChange={handleChange}
           required
+          color="warning"
           fullWidth
         />
         <TextField
-          variant="outlined"
           label="Email"
-          placeholder="nombre@gmail.com"
+          placeholder="name@gmail.com"
           name="email"
           onChange={handleChange}
           required
+          color="warning"
+          variant="filled"
           fullWidth
         />
         <Button variant="contained" type="submit">
-          Enviar
+          Send
         </Button>
       </form>
     </div>

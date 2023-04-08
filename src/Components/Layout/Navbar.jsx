@@ -2,7 +2,6 @@ import React, { useContext, useEffect } from "react";
 import { ContextGlobal } from "../utils/GlobalContext";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
-import "../../index.css";
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
@@ -20,8 +19,7 @@ const Navbar = () => {
   useEffect(() => {}, [state.theme]);
 
   return (
-    <nav id="navbar">
-      {/* Aqui deberan agregar los liks correspondientes a las rutas definidas */}
+    <nav className={state.theme}>
       <ul className="list-navbar">
         <li>
           <Link to="/home">Home</Link>
@@ -33,7 +31,6 @@ const Navbar = () => {
           <Link to="/favs">Favs</Link>
         </li>
         <li>
-          {/* Deberan implementar ademas la logica para cambiar de Theme con el button */}
           <Button variant="outlined" onClick={ChageTheme}>
             ☀ 🌙
           </Button>

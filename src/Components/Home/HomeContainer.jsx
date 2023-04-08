@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import HomeCard from "./HomeCard";
 import { ContextGlobal } from "../utils/GlobalContext";
 import { getDentists } from "../../services/dentistsServices";
+import "../Home/Home.css";
 
 const HomeContainer = () => {
   const { state, dispatch } = useContext(ContextGlobal);
@@ -19,9 +20,9 @@ const HomeContainer = () => {
 
   return (
     <main>
-      <h1>Home</h1>
+      <h1>Dentists:</h1>
+      <br></br>
       <div className="card-grid">
-        {/* Aqui deberias renderizar las cards */}
         {state.users.map((dentist) => (
           <HomeCard
             key={dentist.id}
