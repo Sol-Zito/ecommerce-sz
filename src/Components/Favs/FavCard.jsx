@@ -26,10 +26,10 @@ const FavCard = ({ dentist, removeFav, state }) => {
     >
       <CardMedia
         sx={{ with: 150, height: 140 }}
-        image="../../../public/images/doctor.jpg"
+        image="/images/doctor.jpg"
         title="doctor placeholder"
       />
-      <CardContent sx={{ with: 150, height: 140 }}>
+      <CardContent sx={{ with: 150, height: 160 }}>
         <Typography
           gutterBottom
           variant="h5"

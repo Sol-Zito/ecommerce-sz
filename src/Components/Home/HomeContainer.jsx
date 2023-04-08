@@ -3,6 +3,7 @@ import HomeCard from "./HomeCard";
 import { ContextGlobal } from "../utils/GlobalContext";
 import { getDentists } from "../../services/dentistsServices";
 import "../Home/Home.css";
+import Swal from "sweetalert2";
 
 const HomeContainer = () => {
   const { state, dispatch } = useContext(ContextGlobal);
@@ -16,6 +17,7 @@ const HomeContainer = () => {
 
   const addFav = (obj) => {
     dispatch({ type: "ADD_FAV", payload: obj });
+    Swal.fire("Good job!", `${obj.name}, was successfully added`, "success");
   };
 
   return (

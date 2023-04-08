@@ -5,6 +5,7 @@ import { getDentistById } from "../../services/dentistsServices";
 import "../../index.css";
 import "../Details/Detail.css";
 import DetailCard from "./DetailCard";
+import Swal from "sweetalert2";
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
@@ -23,6 +24,7 @@ const DetailContainer = () => {
 
   const addFav = (obj) => {
     dispatch({ type: "ADD_FAV", payload: obj });
+    Swal.fire("Good job!", `${obj.name}, was successfully added`, "success");
   };
 
   return (

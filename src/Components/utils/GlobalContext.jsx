@@ -1,5 +1,4 @@
 import { createContext, useReducer } from "react";
-import Swal from "sweetalert2";
 
 const getThemeFromStorage = () => {
   const localData = localStorage.getItem("theme");
@@ -44,19 +43,7 @@ function globalReducer(state, action) {
       localStorage.setItem("theme", "dark");
       return { ...state, theme: getThemeFromStorage() };
     case "ADD_FAV":
-      let exist = state.favs.some(
-        (element) => element.id === action.payload.id
-      );
-      if (exist) {
-        Swal.fire("Warning!", `Already exists in favs`, "warning");
-      } else {
-        setDentistInStorage(action.payload);
-        Swal.fire(
-          "Good job!",
-          `${action.payload.name}, was successfully added`,
-          "success"
-        );
-      }
+      setDentistInStorage(action.payload);
       return { ...state, favs: getDentistFavFromStorage() };
     case "REMOVE_FAV":
       let newArray = state.favs.filter((el) => el.id !== action.payload.id);

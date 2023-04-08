@@ -9,6 +9,7 @@ import {
 import React from "react";
 import { Link } from "react-router-dom";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import Tooltip from "@mui/material/Tooltip";
 
 const HomeCard = ({ dentist, addFav, favs, theme }) => {
   const { name, username, id } = dentist;
@@ -28,7 +29,7 @@ const HomeCard = ({ dentist, addFav, favs, theme }) => {
       >
         <CardMedia
           sx={{ with: 150, height: 140 }}
-          image="../../../public/images/doctor.jpg"
+          image="images/doctor.jpg"
           title="doctor placeholder"
         />
         <CardContent sx={{ with: 150, height: 140 }}>
@@ -50,13 +51,19 @@ const HomeCard = ({ dentist, addFav, favs, theme }) => {
               More details...
             </Button>
           </Link>
-          <Button
-            onClick={() => addFav(dentist)}
-            size="small"
-            disabled={favs.some((fav) => fav.id === id) ? true : false}
-          >
-            <FavoriteIcon />
-          </Button>
+          {favs.some((fav) => fav.id === id) ? (
+            <Tooltip title="It's already in favs">
+              <p>
+                <Button disabled>
+                  <FavoriteIcon />
+                </Button>
+              </p>
+            </Tooltip>
+          ) : (
+            <Button onClick={() => addFav(dentist)} size="small">
+              <FavoriteIcon />
+            </Button>
+          )}
         </CardActions>
       </Card>
     </>

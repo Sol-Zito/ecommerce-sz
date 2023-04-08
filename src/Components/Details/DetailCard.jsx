@@ -33,7 +33,9 @@ const DetailCard = ({ dentistSelect, addFav, favs }) => {
         }
       >
         <FavoriteIcon />
-        Add fav
+        {favs.some((fav) => fav.id === dentistSelect.id)
+          ? " It's already in fav"
+          : " Add fav"}
       </Button>
     </div>
   );

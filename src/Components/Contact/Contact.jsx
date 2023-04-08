@@ -64,7 +64,7 @@ const Contact = () => {
       setError({
         ...error,
         isActive: true,
-        errorMessage: "**Please verify your information again**",
+        errorMessage: "** Please verify your information again **",
       });
     }
   };
