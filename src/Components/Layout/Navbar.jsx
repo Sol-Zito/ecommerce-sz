@@ -1,9 +1,7 @@
 import React, { useContext, useEffect } from "react";
-import { ContextGlobal } from "../utils/GlobalContext";
+import { ContextGlobal } from "../context/GlobalContext";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
-
-//Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
 const Navbar = () => {
   const { state, dispatch } = useContext(ContextGlobal);

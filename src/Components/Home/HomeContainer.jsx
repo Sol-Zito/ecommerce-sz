@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from "react";
 import HomeCard from "./HomeCard";
-import { ContextGlobal } from "../utils/GlobalContext";
+import { ContextGlobal } from "../context/GlobalContext";
 import { getDentists } from "../../services/dentistsServices";
-import "../Home/Home.css";
 import Swal from "sweetalert2";
+import "../Home/Home.css";
 
 const HomeContainer = () => {
   const { state, dispatch } = useContext(ContextGlobal);

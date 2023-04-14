@@ -1,11 +1,9 @@
 import React, { useContext } from "react";
-import { ContextGlobal } from "../utils/GlobalContext";
+import { ContextGlobal } from "../context/GlobalContext";
 import { Button } from "@mui/material";
 import FavCard from "./FavCard";
-import "../Favs/Fav.css";
 import Swal from "sweetalert2";
-
-//Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
+import "../Favs/Fav.css";
 
 const Favs = () => {
   const { state, dispatch } = useContext(ContextGlobal);

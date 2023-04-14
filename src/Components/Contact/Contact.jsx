@@ -3,8 +3,6 @@ import Form from "./Form";
 import Swal from "sweetalert2";
 import "./Contact.css";
 
-//Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
-
 const Contact = () => {
   const [userData, setUserData] = useState({
     userName: "",
@@ -13,11 +11,12 @@ const Contact = () => {
 
   const [error, setError] = useState({
     isActive: false,
-    errorMessage: "",
+    errorMessage: "** Please verify your information again **",
   });
 
   const nameIsValid = (string) => {
     let regexName = /^[A-Za-zñÑáéíóúÁÉÍÓÚ\s]*$/;
+
     if (string.length > 5 && regexName.test(string)) {
       const arr = string.split(" ");
       const newName = arr
@@ -64,7 +63,6 @@ const Contact = () => {
       setError({
         ...error,
         isActive: true,
-        errorMessage: "** Please verify your information again **",
       });
     }
   };

@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Contact from "./Components/Contact/Contact";
 import Favs from "./Components/Favs/Favs";
-import { ContextProvider } from "./Components/utils/GlobalContext";
+import { ContextProvider } from "./Components/context/GlobalContext";
 import HomeContainer from "./Components/Home/HomeContainer";
 import DetailContainer from "./Components/Details/DetailContainer";
 import Main from "./Components/Main";

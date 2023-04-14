@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { ContextGlobal } from "../utils/GlobalContext";
+import { ContextGlobal } from "../context/GlobalContext";
 import { Outlet } from "react-router-dom";
-import "../../index.css";
-import "../Layout/Layout.css";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import "../../index.css";
+import "../Layout/Layout.css";
 
 const Layout = () => {
   const { state } = useContext(ContextGlobal);
